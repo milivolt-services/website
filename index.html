@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ElectroAndalucía – Mantenimiento Eléctrico</title>
+  <title>Milivolt – Mantenimiento Eléctrico</title>
   <meta name="description" content="Servicios profesionales de mantenimiento eléctrico en Andalucía. Instalaciones, reparaciones y certificaciones. Disponibles 24h. Llámenos: +34 630 848 531" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
@@ -290,29 +290,77 @@
     .contact-val a { color: var(--amber); text-decoration: none; }
     .contact-val a:hover { text-decoration: underline; }
 
-    /* form */
-    .form-control, .form-select {
+    /* ── INSURANCE PLANS ── */
+    #planes { background: var(--panel); }
+    .plan-card {
       background: var(--dark); border: 1px solid var(--border);
-      color: var(--white); border-radius: 2px;
-      font-family: 'Barlow', sans-serif; font-size: .9rem;
+      border-radius: 4px; padding: 2.2rem 2rem 2rem;
+      display: flex; flex-direction: column; height: 100%;
+      position: relative; transition: border-color .3s, transform .3s;
     }
-    .form-control:focus, .form-select:focus {
-      background: var(--dark); border-color: var(--amber);
-      color: var(--white); box-shadow: 0 0 0 2px rgba(244,168,0,.15);
+    .plan-card:hover { border-color: var(--amber); transform: translateY(-4px); }
+    .plan-card.featured {
+      border-color: var(--amber);
+      background: linear-gradient(160deg, #1a1500 0%, var(--dark) 60%);
     }
-    .form-control::placeholder { color: var(--muted); }
-    .form-select option { background: var(--dark); }
-    .form-label {
+    .plan-badge-featured {
+      position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+      background: var(--amber); color: var(--dark);
       font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600; font-size: .8rem; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--muted); margin-bottom: .4rem;
+      font-weight: 700; font-size: .7rem; letter-spacing: .15em;
+      text-transform: uppercase; padding: .25rem .8rem;
+      border-radius: 0 0 4px 4px; white-space: nowrap;
     }
-    #form-success {
-      display: none;
-      background: rgba(244,168,0,.1); border: 1px solid rgba(244,168,0,.4);
-      color: var(--amber); border-radius: 2px; padding: 1rem 1.2rem;
-      font-family: 'Barlow Condensed', sans-serif; font-size: .95rem; letter-spacing: .06em;
+    .plan-name {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem;
+      letter-spacing: .06em; color: var(--white); margin-bottom: .3rem;
     }
+    .plan-tagline {
+      font-size: .82rem; color: var(--muted);
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: .06em; margin-bottom: 1.4rem;
+    }
+    .plan-price {
+      display: flex; align-items: baseline; gap: .3rem;
+      margin-bottom: .3rem;
+    }
+    .plan-price .amount {
+      font-family: 'Bebas Neue', sans-serif; font-size: 3rem;
+      color: var(--amber); line-height: 1;
+    }
+    .plan-price .currency { font-size: 1.3rem; color: var(--amber); align-self: flex-start; margin-top: .4rem; }
+    .plan-price .period { font-size: .82rem; color: var(--muted); margin-left: .1rem; }
+    .plan-note { font-size: .78rem; color: var(--muted); margin-bottom: 1.6rem; }
+    .plan-divider { border-color: var(--border); margin: 1.2rem 0; }
+    .plan-features { list-style: none; padding: 0; margin: 0 0 1.8rem; flex-grow: 1; }
+    .plan-features li {
+      display: flex; align-items: flex-start; gap: .6rem;
+      font-size: .88rem; color: var(--text); margin-bottom: .65rem; line-height: 1.4;
+    }
+    .plan-features li i { color: var(--amber); font-size: .9rem; margin-top: .1rem; flex-shrink: 0; }
+    .plan-features li.unavail { color: var(--muted); }
+    .plan-features li.unavail i { color: var(--border); }
+    .btn-plan {
+      display: block; text-align: center; text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: .95rem; letter-spacing: .1em;
+      text-transform: uppercase; padding: .8rem 1.5rem; border-radius: 2px;
+      transition: background .2s, color .2s, transform .15s;
+    }
+    .btn-plan-outline {
+      border: 1px solid var(--border); color: var(--white);
+    }
+    .btn-plan-outline:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-1px); }
+    .btn-plan-fill {
+      background: var(--amber); color: var(--dark); border: 1px solid var(--amber);
+    }
+    .btn-plan-fill:hover { background: var(--amber-d); color: var(--dark); transform: translateY(-1px); }
+    .compare-note {
+      background: var(--panel2); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1.2rem 1.5rem;
+      font-size: .85rem; color: var(--muted); line-height: 1.7;
+    }
+    .compare-note strong { color: var(--white); }
 
     /* ── FOOTER ── */
     footer {
@@ -364,7 +412,7 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">Electro<span>Andalucía</span></a>
+    <a class="navbar-brand" href="#">Mili<span>volt</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -373,6 +421,7 @@
         <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
         <li class="nav-item"><a class="nav-link" href="#cobertura">Cobertura</a></li>
         <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" href="#planes">Planes</a></li>
         <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
         <li class="nav-item ms-lg-2">
           <a class="btn-call" href="tel:+34630848531"><i class="bi bi-telephone-fill me-1"></i>+34 630 848 531</a>
@@ -631,109 +680,186 @@
   </div>
 </section>
 
+<!-- INSURANCE / MAINTENANCE PLANS -->
+<section id="planes">
+  <div class="container">
+    <div class="section-head text-center">
+      <div class="label-tag">Planes de mantenimiento</div>
+      <div class="amber-line mx-auto"></div>
+      <h2 style="font-size:clamp(2rem,5vw,3.2rem);">Seguro Eléctrico para tu Hogar o Empresa</h2>
+      <p class="text-muted mt-2" style="max-width:580px;margin:auto;">
+        Proteja su instalación con un plan de mantenimiento periódico. Evite averías, reduzca costes y tenga siempre a un electricista de confianza disponible.
+      </p>
+    </div>
+
+    <div class="row g-4 align-items-stretch mb-4">
+
+      <!-- BÁSICO -->
+      <div class="col-md-6 col-lg-3">
+        <div class="plan-card">
+          <div class="plan-name">Básico</div>
+          <div class="plan-tagline">Para viviendas y pequeños pisos</div>
+          <div class="plan-price">
+            <span class="currency">€</span>
+            <span class="amount">9</span>
+            <span class="period">/ mes</span>
+          </div>
+          <div class="plan-note">IVA incluido · Contrato anual</div>
+          <hr class="plan-divider" />
+          <ul class="plan-features">
+            <li><i class="bi bi-check-circle-fill"></i>1 revisión anual de la instalación</li>
+            <li><i class="bi bi-check-circle-fill"></i>Informe de estado del cuadro eléctrico</li>
+            <li><i class="bi bi-check-circle-fill"></i>Atención telefónica en horario laboral</li>
+            <li><i class="bi bi-check-circle-fill"></i>Descuento 10% en reparaciones</li>
+            <li class="unavail"><i class="bi bi-x-circle"></i>Urgencias 24 h</li>
+            <li class="unavail"><i class="bi bi-x-circle"></i>Revisión de automatismos</li>
+            <li class="unavail"><i class="bi bi-x-circle"></i>Mano de obra incluida</li>
+          </ul>
+          <a href="#contacto" class="btn-plan btn-plan-outline">Contratar</a>
+        </div>
+      </div>
+
+      <!-- HOGAR -->
+      <div class="col-md-6 col-lg-3">
+        <div class="plan-card">
+          <div class="plan-name">Hogar</div>
+          <div class="plan-tagline">Para viviendas habituales y chalets</div>
+          <div class="plan-price">
+            <span class="currency">€</span>
+            <span class="amount">19</span>
+            <span class="period">/ mes</span>
+          </div>
+          <div class="plan-note">IVA incluido · Contrato anual</div>
+          <hr class="plan-divider" />
+          <ul class="plan-features">
+            <li><i class="bi bi-check-circle-fill"></i>2 revisiones anuales completas</li>
+            <li><i class="bi bi-check-circle-fill"></i>Informe técnico detallado</li>
+            <li><i class="bi bi-check-circle-fill"></i>Atención telefónica 7 días</li>
+            <li><i class="bi bi-check-circle-fill"></i>Descuento 15% en reparaciones</li>
+            <li><i class="bi bi-check-circle-fill"></i>Urgencias 24 h (2 al año)</li>
+            <li class="unavail"><i class="bi bi-x-circle"></i>Revisión de automatismos</li>
+            <li class="unavail"><i class="bi bi-x-circle"></i>Mano de obra incluida</li>
+          </ul>
+          <a href="#contacto" class="btn-plan btn-plan-outline">Contratar</a>
+        </div>
+      </div>
+
+      <!-- PROFESIONAL (FEATURED) -->
+      <div class="col-md-6 col-lg-3">
+        <div class="plan-card featured">
+          <div class="plan-badge-featured"><i class="bi bi-star-fill me-1"></i>Más Popular</div>
+          <div class="plan-name">Profesional</div>
+          <div class="plan-tagline">Para locales, oficinas y PYMES</div>
+          <div class="plan-price">
+            <span class="currency">€</span>
+            <span class="amount">49</span>
+            <span class="period">/ mes</span>
+          </div>
+          <div class="plan-note">IVA incluido · Contrato anual</div>
+          <hr class="plan-divider" />
+          <ul class="plan-features">
+            <li><i class="bi bi-check-circle-fill"></i>4 revisiones anuales programadas</li>
+            <li><i class="bi bi-check-circle-fill"></i>Revisión de cuadros y automatismos</li>
+            <li><i class="bi bi-check-circle-fill"></i>Atención telefónica prioritaria 24 h</li>
+            <li><i class="bi bi-check-circle-fill"></i>Descuento 20% en materiales</li>
+            <li><i class="bi bi-check-circle-fill"></i>Urgencias ilimitadas 24 h</li>
+            <li><i class="bi bi-check-circle-fill"></i>Mano de obra incluida en revisiones</li>
+            <li class="unavail"><i class="bi bi-x-circle"></i>Gestor de cuenta dedicado</li>
+          </ul>
+          <a href="#contacto" class="btn-plan btn-plan-fill">Contratar</a>
+        </div>
+      </div>
+
+      <!-- INDUSTRIAL -->
+      <div class="col-md-6 col-lg-3">
+        <div class="plan-card">
+          <div class="plan-name">Industrial</div>
+          <div class="plan-tagline">Para naves, fábricas y grandes empresas</div>
+          <div class="plan-price">
+            <span class="currency">€</span>
+            <span class="amount">129</span>
+            <span class="period">/ mes</span>
+          </div>
+          <div class="plan-note">IVA incluido · Contrato anual</div>
+          <hr class="plan-divider" />
+          <ul class="plan-features">
+            <li><i class="bi bi-check-circle-fill"></i>Revisiones mensuales programadas</li>
+            <li><i class="bi bi-check-circle-fill"></i>Mantenimiento de BT y MT</li>
+            <li><i class="bi bi-check-circle-fill"></i>Gestor de cuenta dedicado</li>
+            <li><i class="bi bi-check-circle-fill"></i>Descuento 25% en materiales</li>
+            <li><i class="bi bi-check-circle-fill"></i>Urgencias ilimitadas 24 h</li>
+            <li><i class="bi bi-check-circle-fill"></i>Mano de obra incluida (8 h/mes)</li>
+            <li><i class="bi bi-check-circle-fill"></i>Informe anual de eficiencia energética</li>
+          </ul>
+          <a href="#contacto" class="btn-plan btn-plan-outline">Contratar</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footnote / custom plans note -->
+    <div class="compare-note text-center">
+      <i class="bi bi-info-circle text-warning me-1"></i>
+      <strong>¿Necesita un plan a medida?</strong> Todos los planes son personalizables. Contáctenos en
+      <a href="tel:+34630848531" style="color:var(--amber);text-decoration:none;">+34 630 848 531</a> y le
+      prepararemos un presupuesto sin compromiso adaptado a su instalación. Los precios indicados son orientativos para instalaciones estándar.
+      Las urgencias incluidas implican desplazamiento gratuito; los materiales se facturan aparte salvo en el plan Industrial.
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contacto">
   <div class="container">
     <div class="section-head text-center">
       <div class="label-tag">Contacte con nosotros</div>
       <div class="amber-line mx-auto"></div>
-      <h2 style="font-size:clamp(2rem,5vw,3.2rem);">Solicite Presupuesto Gratuito</h2>
-      <p class="text-muted mt-2">Responderemos en menos de 24 horas. Para urgencias, llame directamente.</p>
+      <h2 style="font-size:clamp(2rem,5vw,3.2rem);">Estamos a su Disposición</h2>
+      <p class="text-muted mt-2">Llámenos o escríbanos por WhatsApp para solicitar presupuesto o atención de urgencia.</p>
     </div>
-    <div class="row g-4">
-      <!-- Info -->
-      <div class="col-lg-4">
-        <div class="contact-card h-100">
-          <div class="contact-item">
-            <div class="contact-icon"><i class="bi bi-telephone-fill"></i></div>
-            <div>
-              <div class="contact-label">Teléfono / Urgencias</div>
-              <div class="contact-val"><a href="tel:+34630848531">+34 630 848 531</a></div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon"><i class="bi bi-whatsapp"></i></div>
-            <div>
-              <div class="contact-label">WhatsApp</div>
-              <div class="contact-val"><a href="https://wa.me/34630848531" target="_blank">+34 630 848 531</a></div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
-            <div>
-              <div class="contact-label">Área de servicio</div>
-              <div class="contact-val">Comunidad Autónoma de Andalucía</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon"><i class="bi bi-clock-fill"></i></div>
-            <div>
-              <div class="contact-label">Horario oficina</div>
-              <div class="contact-val">Lun–Vie 8:00 – 19:00<br><small class="text-muted">Urgencias: 24 / 7 / 365</small></div>
-            </div>
-          </div>
-          <hr style="border-color:var(--border);" />
-          <p class="text-muted" style="font-size:.82rem;line-height:1.6;">Empresa registrada en el Registro de Instaladores Eléctricos de la Consejería de Empleo, Empresa y Trabajo Autónomo de la Junta de Andalucía.</p>
+    <div class="row g-4 justify-content-center">
+      <div class="col-sm-6 col-lg-3">
+        <div class="contact-card text-center h-100">
+          <div class="contact-icon mx-auto mb-3"><i class="bi bi-telephone-fill"></i></div>
+          <div class="contact-label">Teléfono / Urgencias</div>
+          <div class="contact-val mt-1"><a href="tel:+34630848531">+34 630 848 531</a></div>
+          <p class="text-muted mt-2" style="font-size:.8rem;">Disponible 24 h / 7 días</p>
+          <a href="tel:+34630848531" class="btn-primary-custom mt-3 justify-content-center">
+            <i class="bi bi-telephone-fill"></i> Llamar
+          </a>
         </div>
       </div>
-
-      <!-- Form -->
-      <div class="col-lg-8">
-        <div class="contact-card">
-          <form id="contactForm" novalidate>
-            <div class="row g-3">
-              <div class="col-sm-6">
-                <label class="form-label">Nombre y apellidos *</label>
-                <input type="text" class="form-control" id="nombre" placeholder="María García López" required />
-              </div>
-              <div class="col-sm-6">
-                <label class="form-label">Teléfono *</label>
-                <input type="tel" class="form-control" id="telefono" placeholder="+34 6XX XXX XXX" required />
-              </div>
-              <div class="col-sm-6">
-                <label class="form-label">Correo electrónico</label>
-                <input type="email" class="form-control" id="email" placeholder="correo@ejemplo.com" />
-              </div>
-              <div class="col-sm-6">
-                <label class="form-label">Provincia</label>
-                <select class="form-select" id="provincia">
-                  <option value="">— Seleccione —</option>
-                  <option>Almería</option><option>Cádiz</option><option>Córdoba</option>
-                  <option>Granada</option><option>Huelva</option><option>Jaén</option>
-                  <option>Málaga</option><option>Sevilla</option>
-                </select>
-              </div>
-              <div class="col-12">
-                <label class="form-label">Tipo de servicio</label>
-                <select class="form-select" id="servicio">
-                  <option value="">— Seleccione —</option>
-                  <option>Instalación residencial</option>
-                  <option>Instalación comercial / industrial</option>
-                  <option>Mantenimiento preventivo</option>
-                  <option>Avería / Urgencia</option>
-                  <option>Energía solar fotovoltaica</option>
-                  <option>Certificado / Boletín eléctrico</option>
-                  <option>Punto de recarga VE</option>
-                  <option>Otro</option>
-                </select>
-              </div>
-              <div class="col-12">
-                <label class="form-label">Descripción del trabajo *</label>
-                <textarea class="form-control" id="descripcion" rows="4" placeholder="Describa brevemente lo que necesita..." required></textarea>
-              </div>
-              <div class="col-12">
-                <div id="form-success"><i class="bi bi-check-circle-fill me-2"></i>¡Mensaje enviado! Le contactaremos a la mayor brevedad.</div>
-              </div>
-              <div class="col-12">
-                <button type="submit" class="btn-primary-custom w-100 justify-content-center">
-                  <i class="bi bi-send-fill"></i> Enviar Solicitud
-                </button>
-                <p class="text-muted mt-2" style="font-size:.78rem;">* Campos obligatorios. Sus datos no serán cedidos a terceros.</p>
-              </div>
-            </div>
-          </form>
+      <div class="col-sm-6 col-lg-3">
+        <div class="contact-card text-center h-100">
+          <div class="contact-icon mx-auto mb-3"><i class="bi bi-whatsapp"></i></div>
+          <div class="contact-label">WhatsApp</div>
+          <div class="contact-val mt-1"><a href="https://wa.me/34630848531" target="_blank">+34 630 848 531</a></div>
+          <p class="text-muted mt-2" style="font-size:.8rem;">Respuesta rápida por mensaje</p>
+          <a href="https://wa.me/34630848531" target="_blank" class="btn-primary-custom mt-3 justify-content-center">
+            <i class="bi bi-whatsapp"></i> WhatsApp
+          </a>
         </div>
       </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="contact-card text-center h-100">
+          <div class="contact-icon mx-auto mb-3"><i class="bi bi-clock-fill"></i></div>
+          <div class="contact-label">Horario de Oficina</div>
+          <div class="contact-val mt-1">Lun – Vie<br>8:00 – 19:00</div>
+          <p class="text-muted mt-2" style="font-size:.8rem;">Urgencias: 24 / 7 / 365</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="contact-card text-center h-100">
+          <div class="contact-icon mx-auto mb-3"><i class="bi bi-geo-alt-fill"></i></div>
+          <div class="contact-label">Área de Servicio</div>
+          <div class="contact-val mt-1">Comunidad Autónoma<br>de Andalucía</div>
+          <p class="text-muted mt-2" style="font-size:.8rem;">Las 8 provincias cubiertas</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <p class="text-muted" style="font-size:.82rem;max-width:540px;margin:auto;line-height:1.7;">
+        Empresa registrada en el Registro de Instaladores Eléctricos de la Consejería de Empleo, Empresa y Trabajo Autónomo de la Junta de Andalucía.
+      </p>
     </div>
   </div>
 </section>
@@ -743,7 +869,7 @@
   <div class="container">
     <div class="row align-items-center gy-3">
       <div class="col-md-4">
-        <div class="footer-brand">Electro<span>Andalucía</span></div>
+        <div class="footer-brand">Mili<span>volt</span></div>
         <p class="mt-1">Mantenimiento Eléctrico Profesional</p>
       </div>
       <div class="col-md-4 text-md-center">
@@ -751,7 +877,7 @@
         <p>Servicio de urgencias 24 h / 7 días</p>
       </div>
       <div class="col-md-4 text-md-end">
-        <p>© <span id="yr"></span> ElectroAndalucía</p>
+        <p>© <span id="yr"></span> Milivolt</p>
         <p>Todos los derechos reservados</p>
       </div>
     </div>
@@ -801,19 +927,6 @@
   });
 
   // Contact form (static demo)
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const nombre = document.getElementById('nombre').value.trim();
-    const telefono = document.getElementById('telefono').value.trim();
-    const desc = document.getElementById('descripcion').value.trim();
-    if (!nombre || !telefono || !desc) {
-      alert('Por favor, rellene los campos obligatorios (*).');
-      return;
-    }
-    document.getElementById('form-success').style.display = 'block';
-    this.reset();
-    setTimeout(() => { document.getElementById('form-success').style.display = 'none'; }, 6000);
-  });
 </script>
 </body>
 </html>
